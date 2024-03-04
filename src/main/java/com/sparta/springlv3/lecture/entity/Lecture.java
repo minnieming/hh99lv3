@@ -42,12 +42,21 @@ public class Lecture {
 
 
     // Teacher와의 다대일 관계 설정
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "teacher_id") // Teacher 엔티티 클래스의 id 필드와 매핑
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "teacher_id") // Teacher 엔티티 클래스의 id 필드와 매핑
+//    private Teacher teacher;
+//
+//    @Column(nullable = false)
+//    private String teacher_name; // Teacher 엔티티의 teacher_name과 매핑
+
+    @ManyToOne (cascade = CascadeType.ALL)
+    @JoinColumn(name = "teacher_id")
     private Teacher teacher;
 
-    @Column(nullable = false)
-    private String teacher_name; // Teacher 엔티티의 teacher_name과 매핑
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
+    }
+
 
     public Lecture(LectureRequestDto lectureRequestDto) {
         this.lectureName = lectureRequestDto.getLectureName();
@@ -57,8 +66,8 @@ public class Lecture {
         this.category = CategoryEnum.valueOf(lectureRequestDto.getCategory());
         this.registrationDate = LocalDate.now();
 
-        this.teacher = lectureRequestDto.getTeacher_name();
-        this.teacher_name = teacher.getTeacher_name(); // teacher_name 매핑
+        this.teacher = lectureRequestDto.getTeacher();
+//        this.teacher_name = teacher.getTeacher_name(); // teacher_name 매핑
 
     }
 

@@ -45,7 +45,7 @@ public class Teacher {
 //    private List<Lecture> lectures = new ArrayList<>();
 
     @OneToMany(mappedBy = "teacher", cascade = CascadeType.ALL)
-    private List<Lecture> lectures = new ArrayList<>();
+    private List<Lecture> lectures = new ArrayList<Lecture>();
 
     public Teacher(TeacherRequestDto teacherRequestDto) {
         this.teacher_name = teacherRequestDto.getTeacher_name();

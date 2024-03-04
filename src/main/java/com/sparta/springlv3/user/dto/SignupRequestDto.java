@@ -1,5 +1,6 @@
 package com.sparta.springlv3.user.dto;
 
+import jakarta.persistence.Column;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;

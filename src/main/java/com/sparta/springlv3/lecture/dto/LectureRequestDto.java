@@ -15,7 +15,7 @@ public class LectureRequestDto {
     private String category; //카테고리
     private LocalDate registrationDate; //등록일
 //    private Timestamp registrationDate; // 타입 임시 지정 //등록일
-    private Teacher teacher_name; //강사이름
+    private Teacher teacher; //강사이름
 
 
 }
