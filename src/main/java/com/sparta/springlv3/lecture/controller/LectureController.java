@@ -68,3 +68,4 @@ public class LectureController {
              throw new IllegalArgumentException("관리자가 아닙니다. 선택한 강사가 촬영한 강의 목록 조회를 할 수 없습니다.");
          }
 }
+//
