@@ -25,9 +25,6 @@ public class User {
     @Enumerated(EnumType.STRING) // Enum 값과 매핑
     private DepartmentEnum department;
 
-//    @Column(nullable = false)
-//    private String auth;
-
     @Column(nullable = false)
     @Enumerated(value = EnumType.STRING)
     private UserRoleEnum role;

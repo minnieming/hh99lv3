@@ -26,10 +26,6 @@ public class SignupResponseDto {
     @NotBlank
     private UserRoleEnum role;
 
-//    @NotBlank
-//    private String createUserId;
-//
-//    private boolean admin = false;
     private String adminToken = "";
 
     public SignupResponseDto(User user) {
