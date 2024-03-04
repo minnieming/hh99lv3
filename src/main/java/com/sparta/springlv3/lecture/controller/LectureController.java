@@ -46,7 +46,7 @@ public class LectureController {
         }
 
         // 선택한 강의 조회
-        @GetMapping ("/lecture/{lectureId}")
+        @GetMapping ("/select/lecture/{lectureId}")
         public LectureResponseDto updateLecture(@PathVariable Long lectureId, @AuthenticationPrincipal UserDetailsImpl userDetails) {
             if (userDetails != null
                     && userDetails.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_MANAGER"))
@@ -57,14 +57,14 @@ public class LectureController {
         }
 
 
-    //     카테고리별 강의 목록 조회
-    @GetMapping("/lecture/{category}")
-    public List<LectureResponseDto> findCategoryLecuture(@PathVariable CategoryEnum category, @AuthenticationPrincipal UserDetailsImpl userDetails) {
-        if (userDetails != null
-                && userDetails.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_MANAGER"))
-                || userDetails.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_STAFF"))) {
-            return lectureService.findLecturesByCategory(category);
-        }
-        throw new IllegalArgumentException("관리자가 아닙니다. 선택한 강사가 촬영한 강의 목록 조회를 할 수 없습니다.");
-    }
+         //   카테고리별 강의 목록 조회
+         @GetMapping("/find/lecture/{category}")
+         public List<LectureResponseDto> findCategoryLecuture(@PathVariable CategoryEnum category, @AuthenticationPrincipal UserDetailsImpl userDetails) {
+             if (userDetails != null
+                     && userDetails.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_MANAGER"))
+                     || userDetails.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_STAFF"))) {
+                    return lectureService.findLecturesByCategory(category);
+                }
+             throw new IllegalArgumentException("관리자가 아닙니다. 선택한 강사가 촬영한 강의 목록 조회를 할 수 없습니다.");
+         }
 }

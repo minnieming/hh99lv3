@@ -28,10 +28,10 @@ public class Lecture {
     private Long price;
 
     @Column(nullable = false)
-    private String introductionL;
+    private String introL;
 
-    @Column(nullable = false)
-    private String introduction;
+//    @Column(nullable = false)
+//    private String introduction;
 
     @Column(nullable = false)
     private LocalDate registrationDate; // 타입 임시 지정
@@ -39,6 +39,13 @@ public class Lecture {
     @Column(nullable = false)
     @Enumerated(EnumType.STRING) // Enum 값과 매핑
     private CategoryEnum category;
+
+    @ManyToOne
+    @JoinColumn (name = "teacher_id")
+    private Teacher teacher;
+
+
+
 
 
     // Teacher와의 다대일 관계 설정
@@ -49,20 +56,21 @@ public class Lecture {
 //    @Column(nullable = false)
 //    private String teacher_name; // Teacher 엔티티의 teacher_name과 매핑
 
-    @ManyToOne (cascade = CascadeType.ALL)
-    @JoinColumn(name = "teacher_id")
-    private Teacher teacher;
-
-    public void setTeacher(Teacher teacher) {
-        this.teacher = teacher;
-    }
+//    ------ 블로그
+//    @ManyToOne (cascade = CascadeType.ALL)
+//    @JoinColumn(name = "teacher_id")
+//    private Teacher teacher;
+//
+//    public void setTeacher(Teacher teacher) {
+//        this.teacher = teacher;
+//    }
 
 
     public Lecture(LectureRequestDto lectureRequestDto) {
         this.lectureName = lectureRequestDto.getLectureName();
         this.price = lectureRequestDto.getPrice();
-        this.introductionL = lectureRequestDto.getIntroductionL();
-        this.introduction = lectureRequestDto.getIntroductionL();
+        this.introL = lectureRequestDto.getIntroL();
+//        this.introduction = lectureRequestDto.getIntroductionL();
         this.category = CategoryEnum.valueOf(lectureRequestDto.getCategory());
         this.registrationDate = LocalDate.now();
 

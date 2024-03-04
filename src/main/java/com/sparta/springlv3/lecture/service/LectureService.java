@@ -49,10 +49,10 @@ public class LectureService {
         // 강의 정보 수정
         lecture.setLectureName(lectureRequestDto.getLectureName());
         lecture.setPrice(lectureRequestDto.getPrice());
-        lecture.setIntroductionL(lectureRequestDto.getIntroductionL());
+        lecture.setIntroL(lectureRequestDto.getIntroL());
         lecture.setCategory(CategoryEnum.valueOf(lectureRequestDto.getCategory())); // 카테고리 수정
-        lecture.setRegistrationDate(lectureRequestDto.getRegistrationDate()); // 등록일 수정
-        lecture.setTeacher(lectureRequestDto.getTeacher()); // 강사 수정
+//        lecture.setRegistrationDate(lectureRequestDto.getRegistrationDate()); // 등록일 수정
+//        lecture.setTeacher(lectureRequestDto.getTeacher()); // 강사 수정
 
         // 변경된 강의 정보 DB에 저장
         lecture = lectureRepository.save(lecture);

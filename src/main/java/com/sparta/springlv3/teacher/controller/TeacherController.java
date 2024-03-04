@@ -1,6 +1,7 @@
 package com.sparta.springlv3.teacher.controller;
 
 
+import com.sparta.springlv3.lecture.dto.LectureResponseDto;
 import com.sparta.springlv3.user.security.UserDetailsImpl;
 import com.sparta.springlv3.teacher.dto.TeacherRequestDto;
 import com.sparta.springlv3.teacher.dto.TeacherResponseDto;
@@ -56,7 +57,7 @@ public class TeacherController {
 
     // 선택한 강사가 촬영한 강의 목록 조회
     @GetMapping("/lecture/{teacherId}")
-    public List<TeacherResponseDto> findTeacherLecutre(@PathVariable Long teacherId, @AuthenticationPrincipal UserDetailsImpl userDetails) {
+    public List<LectureResponseDto> findTeacherLecutre(@PathVariable Long teacherId, @AuthenticationPrincipal UserDetailsImpl userDetails) {
         if (userDetails != null
                 && userDetails.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_MANAGER"))
                 || userDetails.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_STAFF"))) {
