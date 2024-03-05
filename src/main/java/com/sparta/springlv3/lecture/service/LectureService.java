@@ -57,7 +57,7 @@ public class LectureService {
 
         return new LectureResponseDto(lecture);
     }
-
+//
 
     // 강의 조회 메서드
     private Lecture findLecture(Long lectureId) {
